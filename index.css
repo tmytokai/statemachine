@@ -1,0 +1,32 @@
+body {
+  background: white;
+}
+
+table.statetable {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 500px;
+}
+
+.statetable td {
+  width: 150px;
+  border: solid 1px;
+  padding: 10px;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+td.diag {
+  width: 200px;
+  text-align: left;
+  background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);
+}
+
+td.hl {
+  background-color: #FFFF00
+}
+
+button.switch{
+  margin-left: 20px;
+  width: 100px;
+}

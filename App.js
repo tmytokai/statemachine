@@ -104,7 +104,7 @@ export default class App extends Component {
               <table className='statetable'>
               <tbody>
               <tr>
-                <td className='diag' >　　　　　　　　　イベント<br/>現在の状態</td>
+                <td className='diag' >　　　　　　　　イベント<br/>現在の状態</td>
                 <td>スイッチをONにした</td>
                 <td>スイッチをOFFにした</td>
               </tr>

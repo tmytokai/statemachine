@@ -130,7 +130,7 @@ var App = /*#__PURE__*/function (_Component) {
         label: 'スイッチをOFFにした',
         shape: "text",
         fixed: true,
-        x: 370,
+        x: 375,
         y: 110
       }, {
         id: 6,
@@ -144,7 +144,7 @@ var App = /*#__PURE__*/function (_Component) {
         label: 'スイッチをOFFにした',
         shape: "text",
         fixed: true,
-        x: -70,
+        x: -75,
         y: 110
       }, {
         id: 8,
@@ -220,7 +220,15 @@ var App = /*#__PURE__*/function (_Component) {
         className: "statetable"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
         className: "diag"
-      }, "\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u30A4\u30D9\u30F3\u30C8", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), "\u73FE\u5728\u306E\u72B6\u614B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "\u30B9\u30A4\u30C3\u30C1\u3092ON\u306B\u3057\u305F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "\u30B9\u30A4\u30C3\u30C1\u3092OFF\u306B\u3057\u305F")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "diagr"
+      }, "\u30A4\u30D9\u30F3\u30C8"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "diagl"
+      }, "\u73FE\u5728\u306E\u72B6\u614B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+        className: state == 0 || state == 2 ? 'blink' : ''
+      }, "\u30B9\u30A4\u30C3\u30C1\u3092ON\u306B\u3057\u305F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+        className: state == 1 || state == 3 ? 'blink' : ''
+      }, "\u30B9\u30A4\u30C3\u30C1\u3092OFF\u306B\u3057\u305F")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
         className: state == 0 ? 'hl' : ''
       }, "S0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), "\u30B9\u30A4\u30C3\u30C1:OFF", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), "LED:OFF"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "LED\u3092ON\u306B\u3059\u308B", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), "\uFF0F\u3000S1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "\u2015 \uFF0F \u2015")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
         className: state == 1 ? 'hl' : ''
@@ -276,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background: white;\n}\n\ntable.statetable {\n  border-collapse: collapse;\n  table-layout: fixed;\n  width: 500px;\n}\n\n.statetable td {\n  width: 150px;\n  border: solid 1px;\n  padding: 10px;\n  text-align: center;\n  line-height: 1.5em;\n}\n\ntd.diag {\n  width: 200px;\n  text-align: left;\n  background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);\n}\n\ntd.hl {\n  background-color: #FFFF00\n}\n\nbutton.switch{\n  margin-left: 20px;\n  width: 100px;\n}\n", "",{"version":3,"sources":["webpack://./index.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;AACnB;;AAEA;EACE,yBAAyB;EACzB,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,aAAa;EACb,kBAAkB;EAClB,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,0GAA0G;AAC5G;;AAEA;EACE;AACF;;AAEA;EACE,iBAAiB;EACjB,YAAY;AACd","sourcesContent":["body {\n  background: white;\n}\n\ntable.statetable {\n  border-collapse: collapse;\n  table-layout: fixed;\n  width: 500px;\n}\n\n.statetable td {\n  width: 150px;\n  border: solid 1px;\n  padding: 10px;\n  text-align: center;\n  line-height: 1.5em;\n}\n\ntd.diag {\n  width: 200px;\n  text-align: left;\n  background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);\n}\n\ntd.hl {\n  background-color: #FFFF00\n}\n\nbutton.switch{\n  margin-left: 20px;\n  width: 100px;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background: white;\n}\n\ntable.statetable {\n  border-collapse: collapse;\n  table-layout: fixed;\n  width: 500px;\n}\n\n.statetable td {\n  width: 170px;\n  border: solid 1px;\n  padding: 9px;\n  font-size: 15px;\n  text-align: center;\n  line-height: 1.5em;\n  box-sizing: border-box;\n}\n\ntd.diag {\n  width: 200px;\n  background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);\n}\n\ndiv.diagl {\n  width: 100%;\n  text-align: left;\n}\n\ndiv.diagr {\n  width: 100%;\n  text-align: right;\n}\n\ntd.hl {\n  background-color: #FFFF00\n}\n\n\ntd.blink {\n  animation: blinkanim 2s linear infinite;\n}\n@keyframes blinkanim{\n   0% { background: #ffffff }\n  40% { background: #FFAAAA }\n  80% { background: #ffffff }\n}\n\nbutton.switch{\n  margin-left: 20px;\n  width: 100px;\n}\n", "",{"version":3,"sources":["webpack://./index.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;AACnB;;AAEA;EACE,yBAAyB;EACzB,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,0GAA0G;AAC5G;;AAEA;EACE,WAAW;EACX,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,iBAAiB;AACnB;;AAEA;EACE;AACF;;;AAGA;EACE,uCAAuC;AACzC;AACA;GACG,KAAK,oBAAoB;EAC1B,MAAM,oBAAoB;EAC1B,MAAM,oBAAoB;AAC5B;;AAEA;EACE,iBAAiB;EACjB,YAAY;AACd","sourcesContent":["body {\n  background: white;\n}\n\ntable.statetable {\n  border-collapse: collapse;\n  table-layout: fixed;\n  width: 500px;\n}\n\n.statetable td {\n  width: 170px;\n  border: solid 1px;\n  padding: 9px;\n  font-size: 15px;\n  text-align: center;\n  line-height: 1.5em;\n  box-sizing: border-box;\n}\n\ntd.diag {\n  width: 200px;\n  background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);\n}\n\ndiv.diagl {\n  width: 100%;\n  text-align: left;\n}\n\ndiv.diagr {\n  width: 100%;\n  text-align: right;\n}\n\ntd.hl {\n  background-color: #FFFF00\n}\n\n\ntd.blink {\n  animation: blinkanim 2s linear infinite;\n}\n@keyframes blinkanim{\n   0% { background: #ffffff }\n  40% { background: #FFAAAA }\n  80% { background: #ffffff }\n}\n\nbutton.switch{\n  margin-left: 20px;\n  width: 100px;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

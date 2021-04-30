@@ -9,21 +9,42 @@ table.statetable {
 }
 
 .statetable td {
-  width: 150px;
+  width: 170px;
   border: solid 1px;
-  padding: 10px;
+  padding: 9px;
+  font-size: 15px;
   text-align: center;
   line-height: 1.5em;
+  box-sizing: border-box;
 }
 
 td.diag {
   width: 200px;
-  text-align: left;
   background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);
+}
+
+div.diagl {
+  width: 100%;
+  text-align: left;
+}
+
+div.diagr {
+  width: 100%;
+  text-align: right;
 }
 
 td.hl {
   background-color: #FFFF00
+}
+
+
+td.blink {
+  animation: blinkanim 2s linear infinite;
+}
+@keyframes blinkanim{
+   0% { background: #ffffff }
+  40% { background: #FFAAAA }
+  80% { background: #ffffff }
 }
 
 button.switch{

@@ -56,9 +56,9 @@ export default class App extends Component {
         {id: 3, label: 'S3\n\nスイッチ:ON\nLED:OFF', x: 0,   y: 200 },
 
         {id: 4, label: 'スイッチをONにした',  shape: "text", fixed: true, x: 150, y: -15 },
-        {id: 5, label: 'スイッチをOFFにした', shape: "text", fixed: true, x: 370, y: 110 },
+        {id: 5, label: 'スイッチをOFFにした', shape: "text", fixed: true, x: 375, y: 110 },
         {id: 6, label: 'スイッチをONにした',  shape: "text", fixed: true, x: 150, y: 215 },
-        {id: 7, label: 'スイッチをOFFにした', shape: "text", fixed: true, x: -70, y: 110 },
+        {id: 7, label: 'スイッチをOFFにした', shape: "text", fixed: true, x: -75, y: 110 },
 
         {id: 8, label: 'LED',  x: -100,   y: -100 },
       ];
@@ -104,9 +104,9 @@ export default class App extends Component {
               <table className='statetable'>
               <tbody>
               <tr>
-                <td className='diag' >　　　　　　　　イベント<br/>現在の状態</td>
-                <td>スイッチをONにした</td>
-                <td>スイッチをOFFにした</td>
+                <td className='diag' ><div className='diagr'>イベント</div><div className='diagl'>現在の状態</div></td>
+                <td className={state == 0 || state == 2 ? 'blink' : ''}>スイッチをONにした</td>
+                <td className={state == 1 || state == 3 ? 'blink' : ''}>スイッチをOFFにした</td>
               </tr>
               <tr>
                 <td className={state == 0 ? 'hl' : ''} >S0<br/>スイッチ:OFF<br/>LED:OFF</td>

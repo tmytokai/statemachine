@@ -138,10 +138,10 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 /***/ }),
 
-/***/ "./App.js":
-/*!****************!*\
-  !*** ./App.js ***!
-  \****************/
+/***/ "./src/App.js":
+/*!********************!*\
+  !*** ./src/App.js ***!
+  \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -150,9 +150,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ App)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _MyTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyTable */ "./MyTable.js");
-/* harmony import */ var _MySwitch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MySwitch */ "./MySwitch.js");
-/* harmony import */ var _MyNetwork__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MyNetwork */ "./MyNetwork.js");
+/* harmony import */ var _MyTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyTable */ "./src/MyTable.js");
+/* harmony import */ var _MySwitch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MySwitch */ "./src/MySwitch.js");
+/* harmony import */ var _MyNetwork__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MyNetwork */ "./src/MyNetwork.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -205,10 +205,10 @@ var App = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./MyNetwork.js":
-/*!**********************!*\
-  !*** ./MyNetwork.js ***!
-  \**********************/
+/***/ "./src/MyNetwork.js":
+/*!**************************!*\
+  !*** ./src/MyNetwork.js ***!
+  \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -289,7 +289,72 @@ var options = {
     enabled: false
   }
 };
-var network = null;
+
+var nodes = function nodes(state) {
+  var data = [{
+    id: 0,
+    label: 'S0\n\nスイッチ:OFF\nLED:OFF',
+    x: 0,
+    y: 0
+  }, {
+    id: 1,
+    label: 'S1\n\nスイッチ:ON\nLED:ON',
+    x: 300,
+    y: 0
+  }, {
+    id: 2,
+    label: 'S2\n\nスイッチ:OFF\nLED:ON',
+    x: 300,
+    y: 200
+  }, {
+    id: 3,
+    label: 'S3\n\nスイッチ:ON\nLED:OFF',
+    x: 0,
+    y: 200
+  }, {
+    id: 4,
+    label: 'スイッチをONにした',
+    shape: "text",
+    fixed: true,
+    x: 150,
+    y: -15
+  }, {
+    id: 5,
+    label: 'スイッチをOFFにした',
+    shape: "text",
+    fixed: true,
+    x: 375,
+    y: 110
+  }, {
+    id: 6,
+    label: 'スイッチをONにした',
+    shape: "text",
+    fixed: true,
+    x: 150,
+    y: 215
+  }, {
+    id: 7,
+    label: 'スイッチをOFFにした',
+    shape: "text",
+    fixed: true,
+    x: -75,
+    y: 110
+  }, {
+    id: 8,
+    label: 'LED',
+    x: -100,
+    y: -100
+  }];
+  data[state]['color'] = {
+    background: '#FFFF00',
+    border: '#000000'
+  };
+  if (state == 1 || state == 2) data[8]['color'] = {
+    background: '#FF0000',
+    border: '#000000'
+  };
+  return new vis__WEBPACK_IMPORTED_MODULE_2__.DataSet(data);
+};
 
 var MyNetwork = /*#__PURE__*/function (_Component) {
   _inherits(MyNetwork, _Component);
@@ -303,84 +368,20 @@ var MyNetwork = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "nodes", function (state) {
-      var data = [{
-        id: 0,
-        label: 'S0\n\nスイッチ:OFF\nLED:OFF',
-        x: 0,
-        y: 0
-      }, {
-        id: 1,
-        label: 'S1\n\nスイッチ:ON\nLED:ON',
-        x: 300,
-        y: 0
-      }, {
-        id: 2,
-        label: 'S2\n\nスイッチ:OFF\nLED:ON',
-        x: 300,
-        y: 200
-      }, {
-        id: 3,
-        label: 'S3\n\nスイッチ:ON\nLED:OFF',
-        x: 0,
-        y: 200
-      }, {
-        id: 4,
-        label: 'スイッチをONにした',
-        shape: "text",
-        fixed: true,
-        x: 150,
-        y: -15
-      }, {
-        id: 5,
-        label: 'スイッチをOFFにした',
-        shape: "text",
-        fixed: true,
-        x: 375,
-        y: 110
-      }, {
-        id: 6,
-        label: 'スイッチをONにした',
-        shape: "text",
-        fixed: true,
-        x: 150,
-        y: 215
-      }, {
-        id: 7,
-        label: 'スイッチをOFFにした',
-        shape: "text",
-        fixed: true,
-        x: -75,
-        y: 110
-      }, {
-        id: 8,
-        label: 'LED',
-        x: -100,
-        y: -100
-      }];
-      data[state]['color'] = {
-        background: '#FFFF00',
-        border: '#000000'
-      };
-      if (state == 1 || state == 2) data[8]['color'] = {
-        background: '#FF0000',
-        border: '#000000'
-      };
-      return new vis__WEBPACK_IMPORTED_MODULE_2__.DataSet(data);
-    });
-
     _defineProperty(_assertThisInitialized(_this), "redraw", function (state) {
-      //        console.log( 'redraw' );
-      if (network != null) {
+      if (_this.network != null) {
         var data = {
-          nodes: _this.nodes(state),
+          nodes: nodes(state),
           edges: edges
         };
-        network.setData(data);
-        network.redraw();
+
+        _this.network.setData(data);
+
+        _this.network.redraw();
       }
     });
 
+    _this.network = null;
     _this.networkRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
     return _this;
   }
@@ -400,10 +401,10 @@ var MyNetwork = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var state = this.props.state;
       var data = {
-        nodes: this.nodes(state),
+        nodes: nodes(state),
         edges: edges
       };
-      network = new vis__WEBPACK_IMPORTED_MODULE_2__.Network(this.networkRef.current, data, options);
+      this.network = new vis__WEBPACK_IMPORTED_MODULE_2__.Network(this.networkRef.current, data, options);
     }
   }]);
 
@@ -421,10 +422,10 @@ var mapDispatchToProps = {};
 
 /***/ }),
 
-/***/ "./MyStore.js":
-/*!********************!*\
-  !*** ./MyStore.js ***!
-  \********************/
+/***/ "./src/MyStore.js":
+/*!************************!*\
+  !*** ./src/MyStore.js ***!
+  \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -465,10 +466,10 @@ var store = (0,redux__WEBPACK_IMPORTED_MODULE_0__.createStore)(reducer, initialS
 
 /***/ }),
 
-/***/ "./MySwitch.js":
-/*!*********************!*\
-  !*** ./MySwitch.js ***!
-  \*********************/
+/***/ "./src/MySwitch.js":
+/*!*************************!*\
+  !*** ./src/MySwitch.js ***!
+  \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -478,7 +479,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _MyStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyStore */ "./MyStore.js");
+/* harmony import */ var _MyStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyStore */ "./src/MyStore.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -506,7 +507,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var pushed = false;
 
 var MySwitch = /*#__PURE__*/function (_Component) {
   _inherits(MySwitch, _Component);
@@ -523,17 +523,18 @@ var MySwitch = /*#__PURE__*/function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "onmousedown", function (e) {
       _this.props.inc();
 
-      pushed = true;
+      _this.pushed = true;
     });
 
     _defineProperty(_assertThisInitialized(_this), "onmouseup", function (e) {
-      if (pushed) {
+      if (_this.pushed) {
         _this.props.inc();
 
-        pushed = false;
+        _this.pushed = false;
       }
     });
 
+    _this.pushed = false;
     return _this;
   }
 
@@ -568,10 +569,10 @@ var mapDispatchToProps = {
 
 /***/ }),
 
-/***/ "./MyTable.js":
-/*!********************!*\
-  !*** ./MyTable.js ***!
-  \********************/
+/***/ "./src/MyTable.js":
+/*!************************!*\
+  !*** ./src/MyTable.js ***!
+  \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -626,9 +627,9 @@ var MyTable = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
         className: "diag"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "diagr"
+        className: "diagright"
       }, "\u30A4\u30D9\u30F3\u30C8"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "diagl"
+        className: "diagleft"
       }, "\u73FE\u5728\u306E\u72B6\u614B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
         className: state == 0 || state == 2 ? 'blink' : ''
       }, "\u30B9\u30A4\u30C3\u30C1\u3092ON\u306B\u3057\u305F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
@@ -659,10 +660,10 @@ var mapDispatchToProps = {};
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./index.css":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./index.css ***!
-  \*************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/index.css":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/index.css ***!
+  \*****************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -670,16 +671,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background: white;\n}\n\ntable.statetable {\n  border-collapse: collapse;\n  table-layout: fixed;\n  width: 500px;\n}\n\n.statetable td {\n  width: 170px;\n  border: solid 1px;\n  padding: 9px;\n  font-size: 15px;\n  text-align: center;\n  line-height: 1.5em;\n  box-sizing: border-box;\n}\n\ntd.diag {\n  width: 200px;\n  background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);\n}\n\ndiv.diagl {\n  width: 100%;\n  text-align: left;\n}\n\ndiv.diagr {\n  width: 100%;\n  text-align: right;\n}\n\ntd.hl {\n  background-color: #FFFF00\n}\n\n\ntd.blink {\n  animation: blinkanim 2s linear infinite;\n}\n@keyframes blinkanim{\n   0% { background: #ffffff }\n  40% { background: #FFAAAA }\n  80% { background: #ffffff }\n}\n\nbutton.switch{\n  margin-left: 20px;\n  width: 100px;\n}\n", "",{"version":3,"sources":["webpack://./index.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;AACnB;;AAEA;EACE,yBAAyB;EACzB,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,0GAA0G;AAC5G;;AAEA;EACE,WAAW;EACX,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,iBAAiB;AACnB;;AAEA;EACE;AACF;;;AAGA;EACE,uCAAuC;AACzC;AACA;GACG,KAAK,oBAAoB;EAC1B,MAAM,oBAAoB;EAC1B,MAAM,oBAAoB;AAC5B;;AAEA;EACE,iBAAiB;EACjB,YAAY;AACd","sourcesContent":["body {\n  background: white;\n}\n\ntable.statetable {\n  border-collapse: collapse;\n  table-layout: fixed;\n  width: 500px;\n}\n\n.statetable td {\n  width: 170px;\n  border: solid 1px;\n  padding: 9px;\n  font-size: 15px;\n  text-align: center;\n  line-height: 1.5em;\n  box-sizing: border-box;\n}\n\ntd.diag {\n  width: 200px;\n  background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);\n}\n\ndiv.diagl {\n  width: 100%;\n  text-align: left;\n}\n\ndiv.diagr {\n  width: 100%;\n  text-align: right;\n}\n\ntd.hl {\n  background-color: #FFFF00\n}\n\n\ntd.blink {\n  animation: blinkanim 2s linear infinite;\n}\n@keyframes blinkanim{\n   0% { background: #ffffff }\n  40% { background: #FFAAAA }\n  80% { background: #ffffff }\n}\n\nbutton.switch{\n  margin-left: 20px;\n  width: 100px;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background: white;\n}\n\ntable.statetable {\n  border-collapse: collapse;\n  table-layout: fixed;\n  width: 550px;\n}\n\n.statetable td {\n  border: solid 1px;\n  padding: 9px;\n  font-size: 15px;\n  text-align: center;\n  line-height: 1.5em;\n  box-sizing: border-box;\n}\n\ntd.diag {\n  width: 200px;\n  background: linear-gradient(17deg, rgba(0,0,0,0), rgba(0,0,0,0) 49%, black 50%, black, 50.5%,  rgba(0,0,0,0) 51%,  rgba(0,0,0,0) );\n}\n\ndiv.diagleft {\n  width: 100%;\n  text-align: left;\n}\n\ndiv.diagright {\n  width: 100%;\n  text-align: right;\n}\n\ntd.hl {\n  background-color: #FFFF00\n}\n\n\ntd.blink {\n  animation: blinkanim 2s linear infinite;\n}\n@keyframes blinkanim{\n   0% { background: #ffffff }\n  40% { background: #FFAAAA }\n  80% { background: #ffffff }\n}\n\nbutton.switch{\n  margin-left: 20px;\n  width: 100px;\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;AACnB;;AAEA;EACE,yBAAyB;EACzB,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE,iBAAiB;EACjB,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,kIAAkI;AACpI;;AAEA;EACE,WAAW;EACX,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,iBAAiB;AACnB;;AAEA;EACE;AACF;;;AAGA;EACE,uCAAuC;AACzC;AACA;GACG,KAAK,oBAAoB;EAC1B,MAAM,oBAAoB;EAC1B,MAAM,oBAAoB;AAC5B;;AAEA;EACE,iBAAiB;EACjB,YAAY;AACd","sourcesContent":["body {\n  background: white;\n}\n\ntable.statetable {\n  border-collapse: collapse;\n  table-layout: fixed;\n  width: 550px;\n}\n\n.statetable td {\n  border: solid 1px;\n  padding: 9px;\n  font-size: 15px;\n  text-align: center;\n  line-height: 1.5em;\n  box-sizing: border-box;\n}\n\ntd.diag {\n  width: 200px;\n  background: linear-gradient(17deg, rgba(0,0,0,0), rgba(0,0,0,0) 49%, black 50%, black, 50.5%,  rgba(0,0,0,0) 51%,  rgba(0,0,0,0) );\n}\n\ndiv.diagleft {\n  width: 100%;\n  text-align: left;\n}\n\ndiv.diagright {\n  width: 100%;\n  text-align: right;\n}\n\ntd.hl {\n  background-color: #FFFF00\n}\n\n\ntd.blink {\n  animation: blinkanim 2s linear infinite;\n}\n@keyframes blinkanim{\n   0% { background: #ffffff }\n  40% { background: #FFAAAA }\n  80% { background: #ffffff }\n}\n\nbutton.switch{\n  margin-left: 20px;\n  width: 100px;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34120,10 +34121,10 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./index.css":
-/*!*******************!*\
-  !*** ./index.css ***!
-  \*******************/
+/***/ "./src/index.css":
+/*!***********************!*\
+  !*** ./src/index.css ***!
+  \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -34131,9 +34132,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./index.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./index.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./index.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/index.css");
 
             
 
@@ -94421,16 +94422,16 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.css */ "./index.css");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App */ "./App.js");
+/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.css */ "./src/index.css");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App */ "./src/App.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _MyStore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MyStore */ "./MyStore.js");
+/* harmony import */ var _MyStore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MyStore */ "./src/MyStore.js");
 
 
 
@@ -94439,9 +94440,9 @@ __webpack_require__.r(__webpack_exports__);
 
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_redux__WEBPACK_IMPORTED_MODULE_4__.Provider, {
   store: _MyStore__WEBPACK_IMPORTED_MODULE_5__.store
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_App__WEBPACK_IMPORTED_MODULE_3__.default, null)), document.getElementById('root'));
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_App__WEBPACK_IMPORTED_MODULE_3__.default, null)), document.getElementById(rootdivid));
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=statemachine.js.map

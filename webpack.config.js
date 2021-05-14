@@ -2,7 +2,7 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     entry: {
-        main: './index.js'
+        statemachine: './src/index.js'
     },
     output: {
         path: __dirname+"/dist",

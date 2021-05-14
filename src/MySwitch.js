@@ -2,23 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { inc } from './MyStore';
 
-let pushed = false
-
 class MySwitch extends Component {
 
     constructor(props) {
         super(props);
+        this.pushed = false
     }
   
     onmousedown = (e) => {
         this.props.inc();
-        pushed = true;
+        this.pushed = true;
     }
 
     onmouseup = (e) => {
-        if( pushed ){
+        if( this.pushed ){
             this.props.inc();
-            pushed = false;
+            this.pushed = false;
         }
     }
 
@@ -37,7 +36,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  inc
+    inc
 }
 
 export default connect( mapStateToProps, mapDispatchToProps )(MySwitch);

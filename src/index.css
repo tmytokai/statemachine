@@ -5,11 +5,10 @@ body {
 table.statetable {
   border-collapse: collapse;
   table-layout: fixed;
-  width: 500px;
+  width: 550px;
 }
 
 .statetable td {
-  width: 170px;
   border: solid 1px;
   padding: 9px;
   font-size: 15px;
@@ -20,15 +19,15 @@ table.statetable {
 
 td.diag {
   width: 200px;
-  background: linear-gradient(17deg, transparent, white 49%, black 50%, black 50.5%, white 51%, transparent);
+  background: linear-gradient(17deg, rgba(0,0,0,0), rgba(0,0,0,0) 49%, black 50%, black, 50.5%,  rgba(0,0,0,0) 51%,  rgba(0,0,0,0) );
 }
 
-div.diagl {
+div.diagleft {
   width: 100%;
   text-align: left;
 }
 
-div.diagr {
+div.diagright {
   width: 100%;
   text-align: right;
 }

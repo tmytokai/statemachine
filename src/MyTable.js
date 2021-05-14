@@ -15,7 +15,7 @@ class MyTable extends Component {
               <table className='statetable'>
               <tbody>
               <tr>
-                <td className='diag' ><div className='diagr'>イベント</div><div className='diagl'>現在の状態</div></td>
+                <td className='diag' ><div className='diagright'>イベント</div><div className='diagleft'>現在の状態</div></td>
                 <td className={state == 0 || state == 2 ? 'blink' : ''}>スイッチをONにした</td>
                 <td className={state == 1 || state == 3 ? 'blink' : ''}>スイッチをOFFにした</td>
               </tr>
@@ -47,7 +47,7 @@ class MyTable extends Component {
 }
 
 const mapStateToProps = state => ({
-  state: state.state
+    state: state.state
 });
 
 const mapDispatchToProps = {
